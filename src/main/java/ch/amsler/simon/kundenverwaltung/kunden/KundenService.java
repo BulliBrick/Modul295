@@ -33,4 +33,9 @@ public class KundenService {
     public void delete(KundenData data){
         KundenRepository.delete(data);
     }
+
+    public void deleteById(int id) {
+        KundenRepository.deleteById((long) id);
+
+    }
 }
