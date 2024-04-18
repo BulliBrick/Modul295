@@ -12,9 +12,10 @@ public class RequestsData{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true,nullable=false)
     private Long Kundennummer;
 
     private String vorname;
     private String name;
+
+
 }

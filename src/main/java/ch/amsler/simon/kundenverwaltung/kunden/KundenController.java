@@ -23,19 +23,19 @@ public class KundenController {
 
 
     @GetMapping("/api/kunden")
-    @PreAuthorize("hasRole('admin') or hasRole('user')")
+    @PreAuthorize("hasRole('admin')")
     ResponseEntity<List<KundenData>> kundenKunden() {
         return new ResponseEntity<>(kundenService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/api/kunden/{id}")
-    @PreAuthorize("hasRole('admin') or hasRole('user')")
+    @PreAuthorize("hasRole('admin') or hasRole('read') or hasRole('update')")
     ResponseEntity<Optional<KundenData>> kundenKundenById(@PathVariable Long id) {
         return new ResponseEntity<>(kundenService.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/api/kunden/name/{name}")
-    @PreAuthorize("hasRole('admin') or hasRole('user')")
+    @GetMapping("/api/kunden/{name}")
+    @PreAuthorize("hasRole('admin') or hasRole('read') or hasRole('update')")
     ResponseEntity<List<KundenData>> kundenKundenByName(@PathVariable String name) {
         return new ResponseEntity<>(kundenService.findByName(name), HttpStatus.OK);
     }
@@ -46,9 +46,17 @@ public class KundenController {
         return new ResponseEntity<>(kundenService.save(kundenData), HttpStatus.CREATED);
     }
 
-    @PutMapping("/api/kunden")
+    @PostMapping("/api/kunden/many")
     @PreAuthorize("hasRole('admin')")
-    ResponseEntity<KundenData> kundenUpdate(@RequestBody KundenData kundenData) {
+    public ResponseEntity<List<KundenData>> kundenCreateMany(@RequestBody List<KundenData> kundenDataList) {
+        List<KundenData> createdKundenDataList = kundenService.saveAll(kundenDataList);
+        return new ResponseEntity<>(createdKundenDataList, HttpStatus.CREATED);
+    }
+
+
+    @PutMapping("/api/kunden/{id}")
+    @PreAuthorize("hasRole('admin')")
+    ResponseEntity<KundenData> kundenUpdate(@RequestBody KundenData kundenData, @PathVariable Long id) {
         return new ResponseEntity<>(kundenService.save(kundenData), HttpStatus.OK);
     }
 

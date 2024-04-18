@@ -1,5 +1,6 @@
 package ch.amsler.simon.kundenverwaltung.requests;
 
+import ch.amsler.simon.kundenverwaltung.kunden.KundenData;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,20 +18,32 @@ public class RequestsController {
         this.requestsService = requestsService;
     }
 
+    @GetMapping("/api/requests")
+    @PreAuthorize("hasRole('admin')")
+    ResponseEntity<List<RequestsData>> requestsRequests() {
+        return new ResponseEntity<>(requestsService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/api/requests/{id}")
+    @PreAuthorize("hasRole('admin') or hasRole('read') or hasRole('update')")
+    ResponseEntity<Optional<RequestsData>> requestsRequestsById(@PathVariable Long id) {
+        return new ResponseEntity<>(requestsService.findById(id), HttpStatus.OK);
+    }
+
     @PostMapping("/api/requests")
-    @PreAuthorize("hasRole('admin') or hasRole('user')")
+    @PreAuthorize("hasRole('admin') or hasRole('update')")
     public ResponseEntity<RequestsData> createRequest(@RequestBody RequestsData requestsData) {
         return new ResponseEntity<>(requestsService.save(requestsData), HttpStatus.CREATED);
     }
 
-    @PutMapping("/api/requests")
-    @PreAuthorize("hasRole('admin') or hasRole('user')")
-    public ResponseEntity<RequestsData> updateRequest(@RequestBody RequestsData requestsData) {
+    @PutMapping("/api/requests/{id}")
+    @PreAuthorize("hasRole('admin') or hasRole('update')")
+    public ResponseEntity<RequestsData> updateRequest(@RequestBody RequestsData requestsData, @PathVariable Long id) {
         return new ResponseEntity<>(requestsService.save(requestsData), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/requests/{id}")
-    @PreAuthorize("hasRole('admin') or hasRole('user')")
+    @PreAuthorize("hasRole('admin') or hasRole('update')")
     public ResponseEntity<Void> deleteRequest(@PathVariable Long id) {
         requestsService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
