@@ -15,3 +15,6 @@ public class GlobalExceptionHandler {
                 .body(exception.getMessage());
     }
 }
+
+
+//simon du kuk
