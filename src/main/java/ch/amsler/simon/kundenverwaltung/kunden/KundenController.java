@@ -28,10 +28,9 @@ public class KundenController {
         return new ResponseEntity<>(kundenService.findAll(), HttpStatus.OK);
     }
 
-
     @GetMapping("/api/kunden/{id}")
     @PreAuthorize("hasRole('admin') or hasRole('user')")
-    ResponseEntity<Optional<KundenData>> kundenKundenById(@PathVariable int id) {
+    ResponseEntity<Optional<KundenData>> kundenKundenById(@PathVariable Long id) {
         return new ResponseEntity<>(kundenService.findById(id), HttpStatus.OK);
     }
 
@@ -55,7 +54,7 @@ public class KundenController {
 
     @DeleteMapping("/api/kunden/{id}")
     @PreAuthorize("hasRole('admin')")
-    ResponseEntity<Void> kundenDelete(@PathVariable int id) {
+    ResponseEntity<Void> kundenDelete(@PathVariable Long id) {
         kundenService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

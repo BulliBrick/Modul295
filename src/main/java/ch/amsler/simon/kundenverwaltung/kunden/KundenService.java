@@ -34,8 +34,8 @@ public class KundenService {
         KundenRepository.delete(data);
     }
 
-    public void deleteById(int id) {
-        KundenRepository.deleteById((long) id);
+    public void deleteById(Long id) {
+        KundenRepository.deleteById((Long) id);
 
     }
 }
