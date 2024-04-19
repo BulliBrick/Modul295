@@ -1,0 +1,19 @@
+
+server.port: 9090
+spring:
+  jpa:
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  #datasource:
+    #url: jdbc:postgresql://localhost:5432/Kundenverwaltung
+    #username: postgres
+    #password: Ri4sch20!
+    #driver-class-name: org.postgresql.Driver
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/M295

@@ -26,6 +26,10 @@ public class AuftragService {
     }
 
 
+    public AuftragData insert(AuftragData data){
+        return AuftragRepository.save(data);
+    }
+
     public AuftragData save(AuftragData data){
         return AuftragRepository.save(data);
     }

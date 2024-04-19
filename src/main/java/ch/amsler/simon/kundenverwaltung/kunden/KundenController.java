@@ -43,7 +43,7 @@ public class KundenController {
     @PostMapping("/api/kunden")
     @PreAuthorize("hasRole('admin')")
     ResponseEntity<KundenData> kundenCreate(@RequestBody KundenData kundenData) {
-        return new ResponseEntity<>(kundenService.save(kundenData), HttpStatus.CREATED);
+        return new ResponseEntity<>(kundenService.insert(kundenData), HttpStatus.CREATED);
     }
 
     @PostMapping("/api/kunden/many")
@@ -57,7 +57,7 @@ public class KundenController {
     @PutMapping("/api/kunden/{id}")
     @PreAuthorize("hasRole('admin')")
     ResponseEntity<KundenData> kundenUpdate(@RequestBody KundenData kundenData, @PathVariable Long id) {
-        return new ResponseEntity<>(kundenService.save(kundenData), HttpStatus.OK);
+        return new ResponseEntity<>(kundenService.save(kundenData, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/kunden/{id}")

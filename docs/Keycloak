@@ -1,0 +1,33 @@
+Hier ist meine Konfiguration von Keycloak
+
+Anmeldung
+
+Username : admin
+Passwort : Ri4sch20!
+
+adminkv user (adminuser für REST controller)
+
+Username : adminkv
+Passwort : Ri4sch20!
+
+requestskv user (normaler user)
+
+Username : requestskv
+Passwort : requestskv
+
+
+## Keycloak Konfiguration
+
+### Realm
+M295
+
+### Client
+
+Kundenverwaltung
+
+Die drei Rollen sind die Standart rollen welche wir im Setup PDF haben
+
+Die Ports sind ebenfalls die Standart Ports wie auch die Redirect URL's
+
+Keycloak starten mit dem command der im Setup PDF steht was wir bekommen haben
+

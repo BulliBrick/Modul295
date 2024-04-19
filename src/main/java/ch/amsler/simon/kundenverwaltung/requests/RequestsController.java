@@ -1,6 +1,7 @@
 package ch.amsler.simon.kundenverwaltung.requests;
 
 import ch.amsler.simon.kundenverwaltung.kunden.KundenData;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 public class RequestsController {
 
     private final RequestsService requestsService;

@@ -12,8 +12,6 @@ public class RequestsData{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long Kundennummer;
-
     private String vorname;
     private String name;
 

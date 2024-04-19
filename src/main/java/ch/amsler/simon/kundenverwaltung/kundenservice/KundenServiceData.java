@@ -1,5 +1,6 @@
 package ch.amsler.simon.kundenverwaltung.kundenservice;
 
+import ch.amsler.simon.kundenverwaltung.kunden.KundenData;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.mapping.List;
@@ -15,11 +16,11 @@ public class KundenServiceData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable=false)
-    private Long Kundennummer;
+    @ManyToOne
+    @JoinColumn(name = "kunden_id", nullable = false)
+    private KundenData KundenData;
 
     private LocalDate servicesdatum;
-
 
     private String servicesstatus;
 

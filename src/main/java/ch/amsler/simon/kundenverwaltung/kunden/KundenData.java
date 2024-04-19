@@ -21,4 +21,23 @@ public class KundenData {
     private String vorname;
     private String name;
 
+    public KundenData() {
+    }
+
+    public KundenData(Long kundennummer, String vorname, String name) {
+        this.Kundennummer = kundennummer;
+        this.vorname = vorname;
+        this.name = name;
+    }
+
+    public KundenData(Long id, Long kundennummer, String vorname, String name) {
+        this.id = id;
+        this.Kundennummer = kundennummer;
+        this.vorname = vorname;
+        this.name = name;
+    }
+
+
+
 }
+

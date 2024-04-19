@@ -27,8 +27,19 @@ public class KundenService {
         return KundenRepository.findByName(name);
     }
 
-    public KundenData save(KundenData data){
+    public KundenData insert(KundenData data){
         return KundenRepository.save(data);
+    }
+
+    public KundenData save(KundenData data, Long id){
+        return KundenRepository.findById(id)
+                .map(kundenOrig -> {
+                    kundenOrig.setName(data.getName());
+                    kundenOrig.setVorname(data.getVorname());
+                    kundenOrig.setKundennummer(data.getKundennummer());
+                    return KundenRepository.save(kundenOrig);
+                })
+                .orElseGet(() -> KundenRepository.save(data));
     }
 
     public void deleteById(Long id) {

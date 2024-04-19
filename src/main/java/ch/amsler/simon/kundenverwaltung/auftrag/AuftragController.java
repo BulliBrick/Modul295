@@ -48,6 +48,7 @@ public class AuftragController {
         return new ResponseEntity<>(auftragService.save(auftragData), HttpStatus.OK);
     }
 
+
     @DeleteMapping("/api/auftrag/{id}")
     @PreAuthorize("hasRole('admin')")
     ResponseEntity<Void> auftragDelete(@PathVariable Long id) {
