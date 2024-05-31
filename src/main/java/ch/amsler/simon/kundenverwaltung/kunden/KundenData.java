@@ -36,8 +36,5 @@ public class KundenData {
         this.vorname = vorname;
         this.name = name;
     }
-
-
-
 }
 

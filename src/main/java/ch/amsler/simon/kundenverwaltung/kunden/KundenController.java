@@ -34,7 +34,7 @@ public class KundenController {
         return new ResponseEntity<>(kundenService.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/api/kunden/{name}")
+    @GetMapping("/api/kunden/name/{name}")
     @PreAuthorize("hasRole('admin') or hasRole('read') or hasRole('update')")
     ResponseEntity<List<KundenData>> kundenKundenByName(@PathVariable String name) {
         return new ResponseEntity<>(kundenService.findByName(name), HttpStatus.OK);
